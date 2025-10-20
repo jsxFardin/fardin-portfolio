@@ -65,7 +65,7 @@ const Hero = () => {
               <span className="group-hover:animate-pulse">View Projects</span>
             </a>
             <a href="https://calendar.app.google/muUJCTnbtDe1fF5E7" target="_blank" rel="noopener noreferrer" className="px-10 py-5 bg-transparent text-white font-semibold rounded-2xl border-2 border-white/30 transition-all duration-300 hover:scale-105 transform hover:bg-white/10 group">
-              <span className="group-hover:animate-pulse">Book a Meeting</span>
+              <span className="group-hover:animate-pulse">Book an appointment</span>
             </a>
           </div>
         </div>
