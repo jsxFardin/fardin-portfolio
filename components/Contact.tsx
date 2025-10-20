@@ -4,8 +4,7 @@ import React, { useState } from "react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     message: "",
   });
@@ -25,8 +24,8 @@ const Contact = () => {
     setIsSubmitting(true);
 
     // Create mailto link
-    const subject = `Portfolio Contact from ${formData.firstName} ${formData.lastName}`;
-    const body = `Name: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+    const subject = `Portfolio Contact from ${formData.name}`;
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
 
     const mailtoLink = `mailto:fardin.ahsan75@gmail.com?subject=${encodeURIComponent(
       subject
@@ -37,8 +36,7 @@ const Contact = () => {
 
     // Reset form
     setFormData({
-      firstName: "",
-      lastName: "",
+      name: "",
       email: "",
       message: "",
     });
@@ -91,7 +89,7 @@ const Contact = () => {
                   type="text"
                   id="name"
                   name="name"
-                  value={formData.firstName}
+                  value={formData.name}
                   onChange={handleInputChange}
                   required
                   readOnly
