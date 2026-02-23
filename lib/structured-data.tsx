@@ -17,6 +17,7 @@ export function PersonSchema() {
       siteConfig.social.linkedin,
       siteConfig.social.github,
       siteConfig.social.twitter,
+      siteConfig.social.facebook,
     ],
     knowsAbout: [
       "Laravel",

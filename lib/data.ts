@@ -200,7 +200,7 @@ export const technologies = [
   "AI Integration",
   "Next.js",
   "Nuxt.js",
-  'React Native',
+  "React Native",
   "TypeScript",
   "PHP",
   "Tailwind CSS",
@@ -213,6 +213,29 @@ export const technologies = [
   "MongoDB",
   "GraphQL",
   "REST API",
+];
+
+export const techCategories = [
+  {
+    title: "Frontend",
+    techs: ["React", "Vue.js", "Next.js", "Nuxt.js", "React Native", "Tailwind CSS", "TypeScript"],
+    accent: "pink",
+  },
+  {
+    title: "Backend",
+    techs: ["Laravel", "Node.js", "PHP", "GraphQL", "REST API", "AI Integration"],
+    accent: "purple",
+  },
+  {
+    title: "Database",
+    techs: ["MySQL", "PostgreSQL", "Redis", "MongoDB"],
+    accent: "cyan",
+  },
+  {
+    title: "DevOps & Cloud",
+    techs: ["Docker", "AWS", "Azure"],
+    accent: "emerald",
+  },
 ];
 
 export const testimonials = [
