@@ -5,12 +5,16 @@ import React from 'react'
 const Skills = () => {
   // Skills data
   const frontendSkills = [
-    { name: 'React', level: 95 },
     { name: 'Vue.js', level: 90 },
+    { name: 'React', level: 95 },
     { name: 'Next.js', level: 85 },
     { name: 'Nuxt.js', level: 80 },
     { name: 'Tailwind CSS', level: 95 },
-    { name: 'TypeScript', level: 85 }
+    { name: 'Bootstrap', level: 95 },
+    { name: 'TypeScript', level: 85 },
+    { name: 'JavaScript', level: 85 },
+    { name: 'HTML', level: 85 },
+    { name: 'CSS', level: 85 },
   ]
 
   const backendSkills = [

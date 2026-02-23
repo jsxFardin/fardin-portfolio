@@ -218,12 +218,12 @@ export const technologies = [
 export const techCategories = [
   {
     title: "Frontend",
-    techs: ["React", "Vue.js", "Next.js", "Nuxt.js", "React Native", "Tailwind CSS", "TypeScript"],
+    techs: ["Vue.js", "React", "Next.js", "Nuxt.js", "React Native", "Tailwind CSS", "Bootstrap", "TypeScript", "JavaScript",],
     accent: "pink",
   },
   {
     title: "Backend",
-    techs: ["Laravel", "Node.js", "PHP", "GraphQL", "REST API", "AI Integration"],
+    techs: ["Laravel", "Node.js", "PHP", "AI Integration", "REST APIs", "Payment Gateways", "Microservices", "Symfony"],
     accent: "purple",
   },
   {
@@ -233,7 +233,7 @@ export const techCategories = [
   },
   {
     title: "DevOps & Cloud",
-    techs: ["Docker", "AWS", "Azure"],
+    techs: ["Docker", "AWS", "Azure", "CI/CD"],
     accent: "emerald",
   },
 ];
