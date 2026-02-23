@@ -1,17 +1,34 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { PersonSchema, WebSiteSchema } from "@/lib/structured-data";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fardinahsan.dev"),
-  title: "Fardin Ahsan - Full Stack Developer Portfolio",
+  title: {
+    default: "Fardin Ahsan - Full Stack Developer Portfolio",
+    template: "%s | Fardin Ahsan",
+  },
   description:
     "Fardin Ahsan — Full Stack Developer (7+ yrs) specializing in Laravel, React, Vue, Node, Next.js, SaaS and microservices. ERP, CRM, POS, e‑commerce, DevOps.",
   alternates: {
     canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
   keywords: [
     "full stack developer",
@@ -27,94 +44,52 @@ export const metadata: Metadata = {
     "CRM systems",
     "POS solutions",
     "DevOps engineer",
-    "CI/CD pipelines",
-    "AWS",
-    "Azure",
-    "Docker",
-    "microservices architecture",
-    "cloud deployment",
-    "scalable web apps",
-    "API integration",
-    "backend development",
-    "frontend development",
-    "real-time tracking platforms",
-    "payment gateway integration",
-    "enterprise web solutions",
-    "business automation",
-    "software architect",
-    "web application developer",
-    "JavaScript",
-    "TypeScript",
-    "PHP",
-    "Python",
-    "MySQL",
-    "PostgreSQL",
-    "MongoDB",
-    "Redis",
-    "Kubernetes",
-    "Terraform",
-    "Jenkins",
-    "Git",
-    "REST API",
-    "GraphQL",
-    "WebSocket",
-    "responsive design",
-    "mobile-first development",
-    "progressive web apps",
-    "performance optimization",
-    "security best practices",
-    "code review",
-    "agile development",
-    "scrum methodology",
-    "team leadership",
-    "technical consulting",
-    "system design",
-    "database optimization",
-    "serverless architecture",
-    "containerization",
-    "monitoring and logging",
-    "automated testing",
-    "continuous integration",
-    "continuous deployment",
-    "infrastructure as code",
-    "cloud migration",
-    "API design",
-    "third-party integrations",
-    "e-commerce development",
-    "fintech solutions",
-    "healthcare applications",
-    "education platforms",
-    "social media applications",
-    "content management systems",
-    "custom software development",
-    "legacy system modernization",
-    "digital transformation",
-    "startup development",
-    "enterprise solutions",
     "freelance developer",
     "remote developer",
     "contract developer",
     "portfolio",
-    "case studies",
-    "project showcase",
-    "client testimonials",
-    "technical expertise",
-    "problem solving",
-    "innovation",
-    "best practices",
-    "code quality",
-    "maintainable code",
-    "documentation",
-    "mentoring",
-    "knowledge sharing",
-    "open source",
-    "community contribution",
   ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://fardinahsan.dev",
+    siteName: "Fardin Ahsan - Full Stack Developer",
+    title: "Fardin Ahsan - Full Stack Developer Portfolio",
+    description:
+      "Full Stack Developer (7+ yrs) specializing in Laravel, React, Vue, Node.js, SaaS and microservices. Available for freelance work.",
+    images: [
+      {
+        url: "/images/fardin-ahsan.jpg",
+        width: 600,
+        height: 600,
+        alt: "Fardin Ahsan - Full Stack Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fardin Ahsan - Full Stack Developer Portfolio",
+    description:
+      "Full Stack Developer (7+ yrs) specializing in Laravel, React, Vue, Node.js, SaaS and microservices.",
+    creator: "@FardinAhsan13",
+    images: ["/images/fardin-ahsan.jpg"],
+  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
   },
+  verification: {
+    // Add your verification IDs when available
+    // google: "your-google-verification-id",
+    // yandex: "your-yandex-verification-id",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0f172a",
 };
 
 export default function RootLayout({
@@ -125,6 +100,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <PersonSchema />
+        <WebSiteSchema />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -135,21 +112,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MFB7SPBC');`,
           }}
         />
-        {/* End Google Tag Manager */}
       </head>
       <body className={inter.className}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MFB7SPBC"
+            title="Google Tag Manager"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Navigation />
-        <main className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen" role="main">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
