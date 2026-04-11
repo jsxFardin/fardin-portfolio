@@ -5,7 +5,7 @@ export const siteConfig = {
   email: "fardin.ahsan75@gmail.com",
   phone: "+880 1759552872",
   location: "Dhaka, Bangladesh",
-  calendarUrl: "https://calendar.app.google/muUJCTnbtDe1fF5E7",
+  calendarUrl: "https://calendar.app.google/59ki4GCme9Qo4RSP8",
   social: {
     linkedin: "https://www.linkedin.com/in/ahsan-fardin/",
     github: "https://github.com/jsxFardin",

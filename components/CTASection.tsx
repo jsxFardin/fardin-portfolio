@@ -33,7 +33,7 @@ const CTASection = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://calendar.app.google/muUJCTnbtDe1fF5E7"
+              href="https://calendar.app.google/59ki4GCme9Qo4RSP8"
               target="_blank"
               rel="noopener noreferrer"
               className="px-10 py-5 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-pink-500/25 focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
