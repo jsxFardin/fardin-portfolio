@@ -5,95 +5,86 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-  }
-  
-  body {
-    @apply bg-slate-900 text-white;
-    font-family: 'Inter', sans-serif;
+    scroll-padding-top: 5rem;
   }
 
-  /* Focus visible for accessibility - keyboard nav */
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    @apply bg-accent-soft text-ink;
+  }
+
   :focus {
     @apply outline-none;
   }
-  
+
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-pink-400 ring-2 ring-pink-400/50;
+    @apply outline-2 outline-offset-2 outline-accent;
   }
 
-  /* Skip link for accessibility */
   .skip-link {
-    @apply absolute -top-full left-4 z-[100] px-4 py-2 bg-pink-600 text-white font-semibold rounded-lg transition-all duration-200 focus:top-4 focus:outline-none focus:ring-2 focus:ring-pink-400;
+    @apply absolute -top-full left-4 z-[100] px-4 py-2 bg-ink text-paper text-sm font-medium rounded-md transition-all duration-200 focus:top-4;
   }
 
-  /* Mobile-first responsive font sizes */
-  h1 {
-    @apply text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
-  }
-  
-  h2 {
-    @apply text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
-  }
-  
-  h3 {
-    @apply text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
-  }
-  
-  p {
-    @apply text-sm sm:text-base md:text-lg lg:text-xl;
-  }
-  
-  .text-sm-mobile {
-    @apply text-xs sm:text-sm md:text-base lg:text-lg;
-  }
-  
-  .text-base-mobile {
-    @apply text-sm sm:text-base md:text-lg lg:text-xl;
-  }
-  
-  .text-lg-mobile {
-    @apply text-base sm:text-lg md:text-xl lg:text-2xl;
-  }
-  
-  .text-xl-mobile {
-    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
-  }
-  
-  .text-2xl-mobile {
-    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
-  }
-  
-  .text-3xl-mobile {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
-  }
-  
-  .text-4xl-mobile {
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
-  }
-  
-  .text-5xl-mobile {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .animate-fade-up {
+      animation: none;
+    }
   }
 }
 
 @layer components {
-  .section-padding {
-    @apply px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16;
+  .container-site {
+    @apply max-w-site mx-auto px-5 sm:px-8;
   }
-  
-  .container-max {
-    @apply max-w-7xl mx-auto;
+
+  .section {
+    @apply py-20 sm:py-28;
   }
-  
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.14em] text-ink-3;
+  }
+
+  .h-display {
+    @apply font-serif font-normal tracking-[-0.02em] leading-[1.02] text-ink;
+  }
+
+  .h-section {
+    @apply font-serif font-normal tracking-[-0.015em] leading-[1.1] text-3xl sm:text-4xl lg:text-[2.75rem] text-ink;
+  }
+
+  .lede {
+    @apply text-lg sm:text-xl text-ink-2 leading-relaxed;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 h-12 px-6 rounded-md text-[15px] font-medium transition-colors duration-200;
+  }
+
   .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25 focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900;
+    @apply btn bg-ink text-paper hover:bg-accent;
   }
-  
+
   .btn-secondary {
-    @apply px-6 py-3 bg-transparent text-white font-semibold rounded-lg border-2 border-white/30 transition-all duration-300 hover:scale-105 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900;
+    @apply btn bg-transparent text-ink border border-line-strong hover:border-ink hover:bg-paper-2;
   }
-  
-  .card {
-    @apply bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300;
+
+  .btn-link {
+    @apply inline-flex items-center gap-1.5 text-[15px] font-medium text-ink underline underline-offset-4 decoration-line-strong hover:decoration-ink transition-colors;
+  }
+
+  .chip {
+    @apply inline-flex items-center h-7 px-2.5 rounded-sm bg-paper-2 border border-line font-mono text-[11px] tracking-wide text-ink-2;
+  }
+
+  .rule {
+    @apply border-t border-line;
   }
 }

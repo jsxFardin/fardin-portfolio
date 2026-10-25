@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -8,17 +8,30 @@ import { PersonSchema, WebSiteSchema } from "@/lib/structured-data";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  preload: true,
+  variable: "--font-sans",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fardinahsan.dev"),
   title: {
-    default: "Fardin Ahsan - Full Stack Developer Portfolio",
+    default: "Fardin Ahsan - AI-First Full Stack Engineer",
     template: "%s | Fardin Ahsan",
   },
   description:
-    "Fardin Ahsan — Full Stack Developer (7+ yrs) specializing in Laravel, React, Vue, Node, Next.js, SaaS and microservices. ERP, CRM, POS, e‑commerce, DevOps.",
+    "Fardin Ahsan — AI-First Full Stack Engineer (7+ yrs). LLM-powered web apps (RAG, AI assistants, workflow automation), SaaS/ERP/CRM platforms, biometric & IoT device integration. Laravel, Node, React, AWS.",
   alternates: {
     canonical: "/",
   },
@@ -31,6 +44,11 @@ export const metadata: Metadata = {
     },
   },
   keywords: [
+    "AI engineer",
+    "AI-first full stack engineer",
+    "LLM developer",
+    "RAG developer",
+    "AI integration",
     "full stack developer",
     "web development",
     "Laravel developer",
@@ -44,6 +62,9 @@ export const metadata: Metadata = {
     "CRM systems",
     "POS solutions",
     "DevOps engineer",
+    "device integration",
+    "biometric attendance integration",
+    "IoT integration",
     "freelance developer",
     "remote developer",
     "contract developer",
@@ -53,24 +74,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://fardinahsan.dev",
-    siteName: "Fardin Ahsan - Full Stack Developer",
-    title: "Fardin Ahsan - Full Stack Developer Portfolio",
+    siteName: "Fardin Ahsan - AI-First Full Stack Engineer",
+    title: "Fardin Ahsan - AI-First Full Stack Engineer",
     description:
-      "Full Stack Developer (7+ yrs) specializing in Laravel, React, Vue, Node.js, SaaS and microservices. Available for freelance work.",
+      "I build AI-powered web apps that cut manual work and scale your business. RAG, LLM assistants, SaaS/ERP, device integration. 7+ yrs · UNICEF, Novo Nordisk, Robi.",
     images: [
       {
         url: "/images/fardin-ahsan.jpg",
-        width: 600,
-        height: 600,
-        alt: "Fardin Ahsan - Full Stack Developer",
+        width: 800,
+        height: 800,
+        alt: "Fardin Ahsan - AI-First Full Stack Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fardin Ahsan - Full Stack Developer Portfolio",
+    title: "Fardin Ahsan - AI-First Full Stack Engineer",
     description:
-      "Full Stack Developer (7+ yrs) specializing in Laravel, React, Vue, Node.js, SaaS and microservices.",
+      "AI-powered web apps that cut manual work: RAG, LLM assistants, SaaS/ERP, device integration. 7+ yrs.",
     creator: "@FardinAhsan13",
     images: ["/images/fardin-ahsan.jpg"],
   },
@@ -89,7 +110,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0f172a",
+  themeColor: "#faf8f4",
 };
 
 export default function RootLayout({
@@ -98,7 +119,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`${inter.variable} ${fraunces.variable} ${mono.variable}`}>
       <head>
         <PersonSchema />
         <WebSiteSchema />
@@ -113,7 +134,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className="font-sans">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe

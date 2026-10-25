@@ -9,7 +9,7 @@ export function PersonSchema() {
     name: siteConfig.name,
     jobTitle: siteConfig.title,
     description:
-      "Full Stack Developer with 7+ years of experience specializing in scalable web applications, microservice-based architectures, and SaaS solutions.",
+      "AI-First Full Stack Engineer with 7+ years of experience building LLM-powered web apps (RAG, AI assistants, workflow automation), SaaS/ERP/CRM platforms and hardware/device integrations.",
     image: `${baseUrl}/images/fardin-ahsan.jpg`,
     url: baseUrl,
     email: siteConfig.email,
@@ -18,8 +18,13 @@ export function PersonSchema() {
       siteConfig.social.github,
       siteConfig.social.twitter,
       siteConfig.social.facebook,
+      siteConfig.social.youtube,
     ],
     knowsAbout: [
+      "Artificial Intelligence",
+      "Large Language Models",
+      "Retrieval-Augmented Generation",
+      "AI Agents",
       "Laravel",
       "Vue.js",
       "React",
@@ -28,10 +33,15 @@ export function PersonSchema() {
       "Microservices",
       "SaaS Development",
       "DevOps",
+      "AWS",
+      "Azure",
+      "Hardware Integration",
+      "Biometric Devices",
+      "IoT",
     ],
     hasOccupation: {
       "@type": "Occupation",
-      name: "Full Stack Developer",
+      name: "AI-First Full Stack Engineer",
     },
   };
 
@@ -49,7 +59,7 @@ export function WebSiteSchema() {
     "@type": "WebSite",
     name: `${siteConfig.name} - Portfolio`,
     url: baseUrl,
-    description: "Full Stack Developer portfolio showcasing projects and expertise.",
+    description: "AI-First Full Stack Engineer portfolio — LLM-powered web apps, SaaS platforms and device integrations.",
     publisher: {
       "@type": "Person",
       name: siteConfig.name,

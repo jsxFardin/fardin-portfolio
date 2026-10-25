@@ -1,223 +1,130 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { projects } from "@/lib/data";
 import { ProjectsSchema } from "@/lib/structured-data";
+import SectionHeader from "./SectionHeader";
+
+const FEATURED = 3;
 
 const Projects = () => {
-  const [currentProject, setCurrentProject] = useState(0);
-  const [imageError, setImageError] = useState(false);
-  const project = projects[currentProject];
-
-  useEffect(() => {
-    setImageError(false);
-  }, [currentProject]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentProject((prev) => (prev + 1) % projects.length);
-    }, 10000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const nextProject = () => {
-    setCurrentProject((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  const goToProject = (index: number) => {
-    setCurrentProject(index);
-  };
+  const featured = projects.slice(0, FEATURED);
+  const more = projects.slice(FEATURED);
 
   return (
-    <section
-      id="projects"
-      className="section-padding bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden"
-      aria-labelledby="projects-heading"
-    >
+    <section id="work" className="section" aria-labelledby="work-heading">
       <ProjectsSchema />
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10" aria-hidden="true">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, white 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
+      <div className="container-site">
+        <SectionHeader
+          id="work-heading"
+          index="01"
+          eyebrow="Selected work"
+          title="Software that runs daily operations, not demos."
+          lede="Production systems I architected or built as a core engineer. Each one still serves real users."
         />
-      </div>
 
-      <div className="container-max relative z-10">
-        <header className="text-center mb-8">
-          <h2 id="projects-heading" className="text-3xl-mobile font-bold text-white mb-4">
-            Featured{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
-              Projects
-            </span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 mx-auto rounded-full" aria-hidden="true" />
-        </header>
-
-        <div className="relative">
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/20 overflow-hidden">
-            <div className="grid lg:grid-cols-2 gap-8 items-start">
-              <div className="space-y-6">
-                <div className="relative aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-pink-500/20 to-purple-500/20 border border-white/20">
-                  {!imageError ? (
+        <ol className="space-y-20 sm:space-y-28">
+          {featured.map((p, i) => {
+            const flip = i % 2 === 1;
+            return (
+              <li
+                key={p.name}
+                className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start"
+              >
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group block lg:col-span-7 ${flip ? "lg:order-2" : ""}`}
+                  aria-label={`Open ${p.name}`}
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-paper-2">
                     <Image
-                      src={project.image}
-                      alt={`${project.name} - ${project.company} project screenshot`}
+                      src={p.image}
+                      alt={`${p.name} screenshot`}
                       fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 58vw"
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
                       loading="lazy"
-                      onError={() => setImageError(true)}
                     />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400">
-                      <div className="text-center">
-                        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center">
-                          <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                            <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <p className="text-sm">{project.name}</p>
-                      </div>
+                  </div>
+                </a>
+
+                <div className={`lg:col-span-5 ${flip ? "lg:order-1" : ""}`}>
+                  <p className="eyebrow mb-4">
+                    <span className="text-ink">0{i + 1}</span> · {p.company}
+                    {"role" in p && p.role ? ` · ${p.role}` : ""}
+                  </p>
+                  <h3 className="font-serif text-2xl sm:text-3xl text-ink leading-tight mb-5">
+                    {p.name}
+                  </h3>
+
+                  <dl className="space-y-4 text-[15px] leading-relaxed">
+                    <div className="grid grid-cols-[5.5rem_1fr] gap-3">
+                      <dt className="eyebrow pt-1">Problem</dt>
+                      <dd className="text-ink-2">{p.problem}</dd>
                     </div>
-                  )}
-                </div>
+                    <div className="grid grid-cols-[5.5rem_1fr] gap-3">
+                      <dt className="eyebrow pt-1">Built</dt>
+                      <dd className="text-ink-2">{p.solution}</dd>
+                    </div>
+                    {"outcome" in p && p.outcome && (
+                      <div className="grid grid-cols-[5.5rem_1fr] gap-3 rule pt-4">
+                        <dt className="eyebrow pt-1">Result</dt>
+                        <dd className="text-ink font-medium">{p.outcome}</dd>
+                      </div>
+                    )}
+                  </dl>
 
-                <div>
-                  <h4 className="text-sm-mobile font-semibold text-white mb-3">
-                    Tech Stack
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.slice(0, 8).map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs text-gray-300 border border-white/20"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <h3 className="text-2xl-mobile font-bold text-white">
-                  {project.name}
-                </h3>
-                <p className="text-base-mobile text-gray-300 leading-relaxed">
-                  {project.description}
-                </p>
-                {"problem" in project && "solution" in project && (
-                  <div className="space-y-2">
-                    <p className="text-sm-mobile text-gray-400">
-                      <strong className="text-pink-400">Problem:</strong>{" "}
-                      {project.problem}
-                    </p>
-                    <p className="text-sm-mobile text-gray-400">
-                      <strong className="text-emerald-400">Solution:</strong>{" "}
-                      {project.solution}
-                    </p>
-                  </div>
-                )}
-                <div>
-                  <h4 className="text-lg-mobile font-semibold text-white mb-3">
-                    Key Features
-                  </h4>
-                  <ul className="space-y-2">
-                    {project.features.slice(0, 4).map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className="text-sm-mobile text-gray-300 flex items-start"
-                      >
-                        <span className="text-pink-400 mr-3 mt-1" aria-hidden="true">•</span>
-                        {feature}
+                  <ul className="flex flex-wrap gap-1.5 mt-6" aria-label="Tech stack">
+                    {p.technologies.slice(0, 7).map((t) => (
+                      <li key={t} className="chip">
+                        {t}
                       </li>
                     ))}
                   </ul>
-                </div>
 
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-sm-mobile font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25 focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
-                  aria-label={`View ${project.name} live demo`}
-                >
-                  View Live Demo
-                  <svg
-                    className="w-4 h-4 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-link mt-6"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
+                    Visit {new URL(p.link).hostname.replace("www.", "")}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
 
-          {/* Carousel Controls */}
-          <div
-            className="flex items-center justify-center mt-8 space-x-4"
-            role="group"
-            aria-label="Project carousel navigation"
-          >
-            <button
-              onClick={prevProject}
-              className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
-              disabled={projects.length <= 1}
-              aria-label="Previous project"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            <div className="flex space-x-2" role="tablist" aria-label="Project indicators">
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToProject(index)}
-                  role="tab"
-                  aria-selected={index === currentProject}
-                  aria-label={`Go to project ${index + 1}`}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 ${
-                    index === currentProject
-                      ? "bg-gradient-to-r from-pink-500 to-purple-500 scale-125"
-                      : "bg-white/30 hover:bg-white/50"
-                  }`}
-                />
+        {more.length > 0 && (
+          <div className="mt-20 sm:mt-28">
+            <p className="eyebrow mb-4">More projects</p>
+            <ul className="rule">
+              {more.map((p) => (
+                <li
+                  key={p.name}
+                  className="grid sm:grid-cols-12 gap-2 sm:gap-6 py-5 border-b border-line items-baseline"
+                >
+                  <h3 className="sm:col-span-4 text-ink font-medium">{p.name}</h3>
+                  <p className="sm:col-span-5 text-sm text-ink-2">
+                    {"outcome" in p && p.outcome ? p.outcome : p.solution}
+                  </p>
+                  <p className="sm:col-span-2 font-mono text-xs text-ink-3">{p.company}</p>
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sm:col-span-1 sm:text-right text-sm text-ink underline underline-offset-4 decoration-line-strong hover:decoration-ink"
+                  >
+                    Visit
+                  </a>
+                </li>
               ))}
-            </div>
-
-            <button
-              onClick={nextProject}
-              className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-pink-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
-              disabled={projects.length <= 1}
-              aria-label="Next project"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+            </ul>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

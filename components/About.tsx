@@ -1,144 +1,86 @@
-"use client";
-
 import React from "react";
-import Image from "next/image";
+import { facts, experience, siteConfig } from "@/lib/data";
+import SectionHeader from "./SectionHeader";
 
-const About = () => {
-  return (
-    <article
-      id="about"
-      className="section-padding bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden"
-      aria-labelledby="about-heading"
-    >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10" aria-hidden="true">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, white 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-      </div>
+const About = () => (
+  <section id="about" className="section bg-paper-2 border-y border-line" aria-labelledby="about-heading">
+    <div className="container-site">
+      <SectionHeader
+        id="about-heading"
+        index="04"
+        eyebrow="About & experience"
+        title="Seven years from POS hardware to LLM pipelines."
+      />
 
-      <div className="container-max relative z-10">
-        <header className="text-center mb-8">
-          <h2 id="about-heading" className="text-3xl-mobile font-bold text-white mb-4">
-            About{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
-              Me
-            </span>
-          </h2>
-          <div
-            className="w-24 h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 mx-auto rounded-full"
-            aria-hidden="true"
-          />
-        </header>
+      <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="lg:col-span-5 space-y-5 text-[15px] sm:text-base text-ink-2 leading-relaxed">
+          <p>
+            I started integrating barcode scanners and punch devices into PHP
+            apps, then spent six years building SaaS, ERP, CRM and e-commerce
+            platforms that teams depend on every day, for organisations like
+            UNICEF, Robi Axiata, Novo Nordisk and Oxfam.
+          </p>
+          <p>
+            Since 2024 my focus is making those systems smarter: RAG document
+            Q&amp;A, customer-facing assistants and LLM-driven automation, with
+            evals and cost tracking so the AI parts are as reliable as the rest.
+          </p>
+          <p>
+            I like small teams, clear briefs and shipping weekly. I write and
+            record short engineering videos on the side.
+          </p>
 
-        <div className="grid lg:grid-cols-3 gap-12 items-center">
-          <aside className="lg:col-span-1 flex justify-center items-center lg:justify-start">
-            <figure className="relative group">
-              <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
-                <Image
-                  src="/images/fardin-ahsan.jpg"
-                  alt="Fardin Ahsan - Full Stack Developer with 7+ years of experience in Laravel, React, Vue.js, and microservice architectures"
-                  width={320}
-                  height={320}
-                  className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-700"
-                  loading="lazy"
-                  sizes="(max-width: 1024px) 256px, 320px"
-                />
+          <dl className="rule pt-6 mt-8 space-y-3">
+            {facts.map((f) => (
+              <div key={f.label} className="grid grid-cols-[7.5rem_1fr] gap-3 text-sm">
+                <dt className="eyebrow pt-0.5">{f.label}</dt>
+                <dd className="text-ink">{f.value}</dd>
               </div>
-              <div
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                aria-hidden="true"
-              />
-            </figure>
-          </aside>
+            ))}
+          </dl>
 
-          <section className="space-y-6 lg:col-span-2">
-            <h3 className="text-2xl-mobile font-semibold text-white">
-              Full Stack Developer with 7+ years of experience
-            </h3>
-            <div>
-              <p className="text-base-mobile text-gray-300 leading-relaxed">
-                I&apos;m a Full Stack Developer specializing in designing,
-                developing, and delivering scalable, high-performance web
-                applications,{" "}
-                <span className="font-semibold text-pink-400">
-                  microservice-based architectures
-                </span>
-                , and{" "}
-                <span className="font-semibold text-purple-400">
-                  SaaS solutions
-                </span>
-                .
-              </p>
-              <p className="text-base-mobile text-gray-300 leading-relaxed">
-                With expertise in Laravel, Vue.js, React, Node.js, Next.js, and
-                Nuxt.js, I&apos;ve successfully built{" "}
-                <span className="font-semibold text-cyan-400">ERP</span>,{" "}
-                <span className="font-semibold text-pink-400">CRM</span>,{" "}
-                <span className="font-semibold text-purple-400">POS</span>, and{" "}
-                <span className="font-semibold text-cyan-400">
-                  e-commerce platforms
-                </span>
-                , along with hands-on experience in{" "}
-                <span className="font-semibold text-pink-400">DevOps</span>,{" "}
-                <span className="font-semibold text-purple-400">AWS</span>,{" "}
-                <span className="font-semibold text-cyan-400">Azure</span>, and{" "}
-                <span className="font-semibold text-pink-400">Docker</span>.
-              </p>
-              <p className="text-base-mobile text-gray-300 leading-relaxed">
-                I&apos;ve delivered enterprise-grade solutions for organizations like{" "}
-                <span className="font-semibold text-pink-400">
-                  UNICEF Bangladesh
-                </span>
-                , <span className="font-semibold text-purple-400">Robi</span>,{" "}
-                <span className="font-semibold text-cyan-400">Oxfam</span>, and{" "}
-                <span className="font-semibold text-pink-400">
-                  Novo Nordisk
-                </span>
-                , as well as developed and scaled international SaaS products.
-              </p>
-              <p className="text-base-mobile text-gray-300 leading-relaxed">
-                My experience includes building{" "}
-                <span className="font-semibold text-purple-400">
-                  AI-powered dashboards
-                </span>
-                ,{" "}
-                <span className="font-semibold text-cyan-400">
-                  microservice-driven systems
-                </span>
-                ,{" "}
-                <span className="font-semibold text-pink-400">
-                  real-time tracking platforms
-                </span>
-                , and{" "}
-                <span className="font-semibold text-purple-400">
-                  payment gateway integration
-                </span>{" "}
-                that enhance operational efficiency and user experience.
-              </p>
-              <p className="text-base-mobile text-gray-300 leading-relaxed">
-                Passionate about leveraging cutting-edge technologies, I focus
-                on solving complex business challenges and driving measurable
-                growth through{" "}
-                <span className="font-semibold text-purple-400">clean</span>,{" "}
-                <span className="font-semibold text-cyan-400">scalable</span>,
-                and{" "}
-                <span className="font-semibold text-pink-400">
-                  future-ready solutions
-                </span>
-                .
-              </p>
-            </div>
-          </section>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+            {siteConfig.resumeUrl && (
+              <a href={siteConfig.resumeUrl} className="btn-link" download>
+                Download résumé
+              </a>
+            )}
+            <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="btn-link">
+              LinkedIn <span aria-hidden="true">↗</span>
+            </a>
+            <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" className="btn-link">
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="lg:col-span-7" id="experience">
+          <p className="eyebrow mb-2">Experience</p>
+          <ol className="rule">
+            {experience.map((e) => (
+              <li key={e.company} className="grid sm:grid-cols-12 gap-3 sm:gap-6 py-6 border-b border-line">
+                <div className="sm:col-span-4">
+                  <p className="font-mono text-xs text-ink-3 mb-1">{e.period}</p>
+                  <p className="text-sm text-ink-3">{e.location}</p>
+                </div>
+                <div className="sm:col-span-8">
+                  <h3 className="text-ink font-medium">
+                    {e.role} <span className="text-ink-3 font-normal">· {e.company}</span>
+                  </h3>
+                  <p className="text-[15px] text-ink-2 leading-relaxed mt-2">{e.summary}</p>
+                  <ul className="flex flex-wrap gap-1.5 mt-4" aria-label="Stack">
+                    {e.stack.map((t) => (
+                      <li key={t} className="chip">{t}</li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
-    </article>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;
