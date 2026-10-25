@@ -18,7 +18,7 @@ const Projects = () => {
           id="work-heading"
           index="01"
           eyebrow="Selected work"
-          title="Software that runs daily operations, not demos."
+          title="Software teams run every day."
           lede="Production systems I architected or built as a core engineer. Each one still serves real users."
         />
 
@@ -37,13 +37,13 @@ const Projects = () => {
                   className={`group block lg:col-span-7 ${flip ? "lg:order-2" : ""}`}
                   aria-label={`Open ${p.name}`}
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-paper-2">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line group-hover:border-line-strong bg-paper-2 transition-colors">
                     <Image
                       src={p.image}
                       alt={`${p.name} screenshot`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 58vw"
-                      className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+                      className="object-cover object-top"
                       loading="lazy"
                     />
                   </div>
@@ -51,8 +51,9 @@ const Projects = () => {
 
                 <div className={`lg:col-span-5 ${flip ? "lg:order-1" : ""}`}>
                   <p className="eyebrow mb-4">
-                    <span className="text-ink">0{i + 1}</span> · {p.company}
-                    {"role" in p && p.role ? ` · ${p.role}` : ""}
+                    <span className="text-ink mr-3">0{i + 1}</span>
+                    {p.company}
+                    {"role" in p && p.role ? `, ${p.role}` : ""}
                   </p>
                   <h3 className="font-serif text-2xl sm:text-3xl text-ink leading-tight mb-5">
                     {p.name}
@@ -62,10 +63,6 @@ const Projects = () => {
                     <div className="grid grid-cols-[5.5rem_1fr] gap-3">
                       <dt className="eyebrow pt-1">Problem</dt>
                       <dd className="text-ink-2">{p.problem}</dd>
-                    </div>
-                    <div className="grid grid-cols-[5.5rem_1fr] gap-3">
-                      <dt className="eyebrow pt-1">Built</dt>
-                      <dd className="text-ink-2">{p.solution}</dd>
                     </div>
                     {"outcome" in p && p.outcome && (
                       <div className="grid grid-cols-[5.5rem_1fr] gap-3 rule pt-4">
@@ -87,10 +84,9 @@ const Projects = () => {
                     href={p.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-link mt-6"
+                    className="btn-link mt-8"
                   >
                     Visit {new URL(p.link).hostname.replace("www.", "")}
-                    <span aria-hidden="true">↗</span>
                   </a>
                 </div>
               </li>
@@ -100,14 +96,14 @@ const Projects = () => {
 
         {more.length > 0 && (
           <div className="mt-20 sm:mt-28">
-            <p className="eyebrow mb-4">More projects</p>
+            <h3 className="eyebrow mb-4">More projects</h3>
             <ul className="rule">
               {more.map((p) => (
                 <li
                   key={p.name}
                   className="grid sm:grid-cols-12 gap-2 sm:gap-6 py-5 border-b border-line items-baseline"
                 >
-                  <h3 className="sm:col-span-4 text-ink font-medium">{p.name}</h3>
+                  <h4 className="sm:col-span-4 text-ink font-medium">{p.name}</h4>
                   <p className="sm:col-span-5 text-sm text-ink-2">
                     {"outcome" in p && p.outcome ? p.outcome : p.solution}
                   </p>
@@ -116,7 +112,8 @@ const Projects = () => {
                     href={p.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="sm:col-span-1 sm:text-right text-sm text-ink underline underline-offset-4 decoration-line-strong hover:decoration-ink"
+                    className="sm:col-span-1 sm:justify-self-end link text-sm"
+                    aria-label={`Visit ${p.name}`}
                   >
                     Visit
                   </a>

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { siteConfig, videos } from "@/lib/data";
 import SectionHeader from "./SectionHeader";
 
@@ -14,7 +15,7 @@ const Videos = () => (
           <>
             Performance, security and AI tooling from real projects.{" "}
             <a href={siteConfig.social.youtube} target="_blank" rel="noopener noreferrer" className="btn-link">
-              YouTube channel <span aria-hidden="true">↗</span>
+              YouTube channel
             </a>
           </>
         }
@@ -29,13 +30,13 @@ const Videos = () => (
               className="group block"
               aria-label={`Watch on YouTube: ${v.title}`}
             >
-              <div className="relative aspect-video overflow-hidden rounded-lg border border-line bg-paper-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+              <div className="relative aspect-video overflow-hidden rounded-lg border border-line group-hover:border-line-strong bg-paper-2 transition-colors">
+                <Image
+                  src={`https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`}
                   alt=""
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  className="object-cover"
                 />
                 <span className="absolute inset-0 flex items-center justify-center">
                   <span className="w-12 h-12 rounded-full bg-paper/95 border border-line flex items-center justify-center">

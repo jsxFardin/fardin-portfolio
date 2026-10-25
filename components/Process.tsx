@@ -27,7 +27,7 @@ const Process = () => (
         <aside className="lg:col-span-5 lg:pl-8 lg:border-l border-line">
           <p className="eyebrow mb-4">AI in my own workflow</p>
           <p className="text-ink-2 text-[15px] leading-relaxed mb-5">
-            &ldquo;AI-first&rdquo; is how I build, not a label. Concretely:
+            How I use AI day to day:
           </p>
           <ul className="space-y-3">
             {aiWorkflow.map((item) => (

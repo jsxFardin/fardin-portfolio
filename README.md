@@ -1,160 +1,40 @@
-# Fardin Ahsan - Full Stack Developer Portfolio
+# fardinahsan.dev
 
-A clean, modern, and responsive portfolio website built with Next.js 13+ (App Router) and Tailwind CSS.
+Personal portfolio of Fardin Ahsan, AI-first full stack engineer. Single page, Next.js 14 App Router, Tailwind CSS, TypeScript. Deployed on Vercel.
 
-## 🚀 Features
+## Run
 
-- **Modern Design**: Clean, professional design with a minimalistic color scheme
-- **Responsive Layout**: Fully responsive design for mobile, tablet, and desktop
-- **Smooth Scrolling**: Smooth navigation between sections with sticky navigation
-- **Component-Based**: Modular React components for easy maintenance
-- **Performance Optimized**: Built with Next.js for optimal performance
-- **SEO Ready**: Proper meta tags and semantic HTML structure
-
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 14.0.0 with App Router
-- **Styling**: Tailwind CSS 3.3.0
-- **Language**: TypeScript
-- **Font**: Inter (Google Fonts)
-- **Icons**: Emoji icons (easily replaceable with custom icons)
-
-## 📁 Project Structure
-
-```
-portfolio-v2/
-├── app/
-│   ├── layout.tsx          # Root layout with navigation
-│   ├── page.tsx            # Main page component
-│   └── globals.css         # Global styles and Tailwind directives
-├── components/
-│   ├── Navigation.tsx      # Sticky navigation component
-│   ├── Hero.tsx            # Hero section with CTA buttons
-│   ├── About.tsx           # About section with skills overview
-│   ├── Projects.tsx        # Portfolio projects grid
-│   ├── Skills.tsx          # Skills with progress bars
-│   └── Contact.tsx         # Contact form and social links
-├── tailwind.config.js      # Tailwind CSS configuration
-├── postcss.config.js       # PostCSS configuration
-├── tsconfig.json           # TypeScript configuration
-└── package.json            # Project dependencies
-```
-
-## 🎨 Sections
-
-1. **Hero Section**: Developer introduction with call-to-action buttons
-2. **About Section**: Profile photo, bio, and skill categories
-3. **Projects Section**: Grid of portfolio projects with live demo and GitHub links
-4. **Skills Section**: Progress bars and skill badges organized by category
-5. **Contact Section**: Contact form and social media links
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd portfolio-v2
-```
-
-2. Install dependencies:
 ```bash
 npm install
-# or
-yarn install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint     # ESLint (next/core-web-vitals)
 ```
 
-3. Run the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Where things live
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+| Path | What |
+|---|---|
+| `app/layout.tsx` | Fonts (Inter, Fraunces, JetBrains Mono), metadata, Open Graph, JSON-LD, Google Tag Manager |
+| `app/page.tsx` | Section order |
+| `app/globals.css` | Tailwind layers and the shared component classes (`.eyebrow`, `.btn-*`, `.link`, `.chip`, `.section`) |
+| `tailwind.config.js` | Design tokens: `paper`, `ink`, `line`, `accent` colours, shadows, `max-w-site` |
+| `lib/data.ts` | All copy and content: projects, services, experience, testimonials, FAQ, videos, facts |
+| `lib/structured-data.tsx` | Person, WebSite and ItemList schemas |
+| `components/` | One file per section |
+| `public/images/` | Portrait, project screenshots, client logos |
+| `public/og-image.png` | 1200x630 social preview |
 
-## 📱 Customization
+## Editing content
 
-### Personal Information
-- Update personal details in each component
-- Replace placeholder content with your information
-- Update social media links and contact details
+Almost everything is in `lib/data.ts`. Add a project, testimonial or FAQ there and the section renders it. Set `siteConfig.resumeUrl` to a PDF path in `public/` to show the résumé buttons.
 
-### Styling
-- Modify colors in `tailwind.config.js`
-- Update component styles in individual component files
-- Customize animations and transitions
+Testimonials accept an optional `source: { label, url }`; when present the card shows a "Verified on …" link.
 
-### Content
-- Add/remove projects in `Projects.tsx`
-- Update skills and proficiency levels in `Skills.tsx`
-- Modify the about section content in `About.tsx`
+## Conventions
 
-## 🎯 Key Features
-
-- **Sticky Navigation**: Fixed navigation bar with smooth scrolling
-- **Responsive Grid**: Mobile-first responsive design
-- **Interactive Elements**: Hover effects and smooth transitions
-- **Professional Layout**: Clean, modern design suitable for professional use
-- **Accessibility**: Semantic HTML and proper ARIA labels
-
-## 📦 Build & Deploy
-
-### Build for Production
-```bash
-npm run build
-# or
-yarn build
-```
-
-### Start Production Server
-```bash
-npm start
-# or
-yarn start
-```
-
-### Deploy
-This project can be easily deployed to:
-- Vercel (recommended for Next.js)
-- Netlify
-- AWS Amplify
-- Any static hosting service
-
-## 🔧 Development
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-
-### Code Style
-
-- TypeScript for type safety
-- Tailwind CSS for styling
-- Component-based architecture
-- Responsive design principles
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📞 Support
-
-If you have any questions or need help with customization, please open an issue in the repository.
-
----
-
-Built with ❤️ using Next.js and Tailwind CSS
+- Colours and fonts only through Tailwind tokens. No raw hex in components.
+- Transitions name their property (`transition-colors`, `transition-transform`). Never `transition-all`.
+- Every interactive element has a `:focus-visible` ring and an `:active` state.
+- Animations respect `prefers-reduced-motion`.
+- Body text 15px or larger, labels 12px or larger.

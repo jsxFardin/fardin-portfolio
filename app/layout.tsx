@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | Fardin Ahsan",
   },
   description:
-    "Fardin Ahsan — AI-First Full Stack Engineer (7+ yrs). LLM-powered web apps (RAG, AI assistants, workflow automation), SaaS/ERP/CRM platforms, biometric & IoT device integration. Laravel, Node, React, AWS.",
+    "Fardin Ahsan, AI-First Full Stack Engineer (7+ yrs). LLM-powered web apps (RAG, AI assistants, workflow automation), SaaS/ERP/CRM platforms, biometric & IoT device integration. Laravel, Node, React, AWS.",
   alternates: {
     canonical: "/",
   },
@@ -77,12 +78,12 @@ export const metadata: Metadata = {
     siteName: "Fardin Ahsan - AI-First Full Stack Engineer",
     title: "Fardin Ahsan - AI-First Full Stack Engineer",
     description:
-      "I build AI-powered web apps that cut manual work and scale your business. RAG, LLM assistants, SaaS/ERP, device integration. 7+ yrs · UNICEF, Novo Nordisk, Robi.",
+      "I build AI-powered web apps that cut manual work and scale your business. RAG, LLM assistants, SaaS/ERP, device integration. 7+ years. UNICEF, Novo Nordisk, Robi.",
     images: [
       {
-        url: "/images/fardin-ahsan.jpg",
-        width: 800,
-        height: 800,
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
         alt: "Fardin Ahsan - AI-First Full Stack Engineer",
       },
     ],
@@ -93,7 +94,7 @@ export const metadata: Metadata = {
     description:
       "AI-powered web apps that cut manual work: RAG, LLM assistants, SaaS/ERP, device integration. 7+ yrs.",
     creator: "@FardinAhsan13",
-    images: ["/images/fardin-ahsan.jpg"],
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.svg",
@@ -123,18 +124,17 @@ export default function RootLayout({
       <head>
         <PersonSchema />
         <WebSiteSchema />
+      </head>
+      {/* suppressHydrationWarning: browser extensions (Grammarly etc.) add attributes to <body> before React hydrates. */}
+      <body className="font-sans" suppressHydrationWarning>
         {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        <Script id="gtm" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MFB7SPBC');`,
-          }}
-        />
-      </head>
-      <body className="font-sans">
+})(window,document,'script','dataLayer','GTM-MFB7SPBC');`}
+        </Script>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -149,7 +149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           Skip to main content
         </a>
         <Navigation />
-        <main id="main-content" className="min-h-screen" role="main">
+        <main id="main-content" className="min-h-screen">
           {children}
         </main>
         <Footer />

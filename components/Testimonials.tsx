@@ -47,9 +47,9 @@ const Attribution = ({ t, size = "md" }: { t: Testimonial; size?: "md" | "lg" })
             href={t.source.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-ink-2 underline underline-offset-4 decoration-line-strong hover:decoration-ink"
+            className="link text-xs text-ink-2"
           >
-            Verified on {t.source.label} <span aria-hidden="true">↗</span>
+            Verified on {t.source.label}
           </a>
         )}
       </p>

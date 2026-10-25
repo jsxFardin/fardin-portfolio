@@ -14,17 +14,17 @@ const FAQ = () => (
           className="!grid-cols-1 lg:!grid-cols-1 mb-6"
         />
       </div>
-      <dl className="lg:col-span-8 rule">
+      <div className="lg:col-span-8 rule">
         {faqs.map((f) => (
           <details key={f.q} className="group border-b border-line">
-            <summary className="flex items-center justify-between gap-6 py-5 cursor-pointer list-none text-ink font-medium [&::-webkit-details-marker]:hidden">
-              <dt>{f.q}</dt>
+            <summary className="flex items-center justify-between gap-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <h3 className="text-ink font-medium">{f.q}</h3>
               <span className="font-mono text-ink-3 group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
             </summary>
-            <dd className="pb-6 text-[15px] text-ink-2 leading-relaxed max-w-[64ch]">{f.a}</dd>
+            <p className="pb-6 text-[15px] text-ink-2 leading-relaxed max-w-[64ch]">{f.a}</p>
           </details>
         ))}
-      </dl>
+      </div>
     </div>
   </section>
 );

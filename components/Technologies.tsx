@@ -16,7 +16,7 @@ const Technologies = () => (
           <div key={c.title} className="grid sm:grid-cols-12 gap-2 sm:gap-6 py-5 border-b border-line">
             <dt className="sm:col-span-3 eyebrow pt-1">{c.title}</dt>
             <dd className="sm:col-span-9 text-ink text-[15px] sm:text-base leading-relaxed">
-              {c.techs.join(" · ")}
+              {c.techs.join(", ")}
             </dd>
           </div>
         ))}

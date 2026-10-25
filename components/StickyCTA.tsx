@@ -27,9 +27,9 @@ const StickyCTA = () => {
         href={siteConfig.calendarUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="pointer-events-auto btn-primary shadow-[0_10px_30px_-10px_rgba(21,20,15,0.45)] animate-fade-up"
+        className="pointer-events-auto btn-primary shadow-float animate-fade-up"
       >
-        Book a 20-min call
+        Book a project call
       </a>
     </div>
   );

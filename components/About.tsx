@@ -1,5 +1,5 @@
 import React from "react";
-import { facts, experience, siteConfig } from "@/lib/data";
+import { facts, experience, siteConfig, stats } from "@/lib/data";
 import SectionHeader from "./SectionHeader";
 
 const About = () => (
@@ -8,9 +8,23 @@ const About = () => (
       <SectionHeader
         id="about-heading"
         index="04"
-        eyebrow="About & experience"
+        eyebrow="About and experience"
         title="Seven years from POS hardware to LLM pipelines."
       />
+
+      <dl className="grid grid-cols-3 gap-4 sm:gap-6 rule pt-8 mb-14">
+        {stats.map((s) => (
+          <div key={s.label}>
+            <dt className="sr-only">{s.label}</dt>
+            <dd className="font-serif text-3xl sm:text-4xl text-ink leading-none mb-2">
+              {s.value}
+            </dd>
+            <dd className="text-xs sm:text-sm text-ink-3 leading-snug max-w-[22ch]">
+              {s.label}
+            </dd>
+          </div>
+        ))}
+      </dl>
 
       <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
         <div className="lg:col-span-5 space-y-5 text-[15px] sm:text-base text-ink-2 leading-relaxed">
@@ -39,23 +53,23 @@ const About = () => (
             ))}
           </dl>
 
-          <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+          <div className="flex flex-wrap gap-x-6 gap-y-3 pt-2">
             {siteConfig.resumeUrl && (
               <a href={siteConfig.resumeUrl} className="btn-link" download>
                 Download résumé
               </a>
             )}
             <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="btn-link">
-              LinkedIn <span aria-hidden="true">↗</span>
+              LinkedIn
             </a>
             <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" className="btn-link">
-              GitHub <span aria-hidden="true">↗</span>
+              GitHub
             </a>
           </div>
         </div>
 
         <div className="lg:col-span-7" id="experience">
-          <p className="eyebrow mb-2">Experience</p>
+          <h3 className="eyebrow mb-2">Experience</h3>
           <ol className="rule">
             {experience.map((e) => (
               <li key={e.company} className="grid sm:grid-cols-12 gap-3 sm:gap-6 py-6 border-b border-line">
@@ -64,9 +78,9 @@ const About = () => (
                   <p className="text-sm text-ink-3">{e.location}</p>
                 </div>
                 <div className="sm:col-span-8">
-                  <h3 className="text-ink font-medium">
-                    {e.role} <span className="text-ink-3 font-normal">· {e.company}</span>
-                  </h3>
+                  <h4 className="text-ink font-medium">
+                    {e.role}, <span className="text-ink-3 font-normal">{e.company}</span>
+                  </h4>
                   <p className="text-[15px] text-ink-2 leading-relaxed mt-2">{e.summary}</p>
                   <ul className="flex flex-wrap gap-1.5 mt-4" aria-label="Stack">
                     {e.stack.map((t) => (

@@ -6,7 +6,7 @@ export const siteConfig = {
   phone: "+880 1759552872",
   location: "Dhaka, Bangladesh",
   timezone: "GMT+6",
-  overlap: "Overlaps US East mornings & all of EU hours",
+  overlap: "Overlaps US East mornings and all of EU hours",
   // Drop a PDF into /public and set the path here to show the résumé button.
   resumeUrl: null as string | null,
   calendarUrl: "https://calendar.app.google/59ki4GCme9Qo4RSP8",
@@ -22,7 +22,7 @@ export const siteConfig = {
 export const projects = [
   {
     name: "Agilibo – Agile SaaS Platform",
-    role: "Senior Software Engineer · 2020–present",
+    role: "Senior Software Engineer, 2020–present",
     outcome:
       "Two-way Jira & Azure DevOps sync, multi-company tenancy and AI-generated sprint insights, in production for distributed teams.",
     description:
@@ -84,7 +84,7 @@ export const projects = [
     ],
     link: "https://alprtm.com/",
     company: "UNICEF Bangladesh",
-    image: "/images/projects/alp.png",
+    image: "/images/projects/alp.webp",
   },
   {
     name: "Prospeneo – Real Estate Software",
@@ -192,13 +192,13 @@ export const services = [
   {
     title: "AI & LLM Integration",
     description:
-      "RAG document Q&A, customer-facing assistants, and LLM workflow automation built into your existing web apps — OpenAI, Anthropic, vector DBs.",
+      "RAG document Q&A, customer-facing assistants, and LLM workflow automation built into your existing web apps, with OpenAI, Anthropic and vector databases.",
     accentColor: "purple",
   },
   {
     title: "Custom Software & SaaS",
     description:
-      "Multi-tenant SaaS, ERP, CRM, POS and dashboards — modular Laravel / Node backends with React or Vue frontends, built to scale.",
+      "Multi-tenant SaaS, ERP, CRM, POS and dashboards: modular Laravel or Node backends with React or Vue frontends, built to scale.",
     accentColor: "blue",
   },
   {
@@ -210,13 +210,13 @@ export const services = [
   {
     title: "DevOps & Cloud",
     description:
-      "Docker, AWS, Azure, CI/CD pipelines and infrastructure as code — deploy daily instead of monthly.",
+      "Docker, AWS, Azure, CI/CD pipelines and infrastructure as code, so you deploy daily instead of monthly.",
     accentColor: "cyan",
   },
   {
     title: "E-commerce & Payments",
     description:
-      "Storefronts, PWAs, payment gateways, shipping APIs and order tracking — from catalog to checkout to delivery.",
+      "Storefronts, PWAs, payment gateways, shipping APIs and order tracking, from catalog to checkout to delivery.",
     accentColor: "emerald",
   },
   {
@@ -225,31 +225,6 @@ export const services = [
       "React Native iOS and Android apps sharing one API with your web platform.",
     accentColor: "rose",
   },
-];
-
-export const technologies = [
-  "Laravel",
-  "Vue.js",
-  "React",
-  "Node.js",
-  "OpenAI API",
-  "Anthropic API",
-  "RAG",
-  "Next.js",
-  "Nuxt.js",
-  "React Native",
-  "TypeScript",
-  "PHP",
-  "Tailwind CSS",
-  "Docker",
-  "AWS",
-  "Azure",
-  "MySQL",
-  "PostgreSQL",
-  "Redis",
-  "MongoDB",
-  "GraphQL",
-  "REST API",
 ];
 
 export const techCategories = [
@@ -351,15 +326,14 @@ export const testimonials: Testimonial[] = [
 
 export const stats = [
   { value: "7+", label: "years shipping production software" },
-  { value: "50+", label: "web & mobile apps delivered" },
-  { value: "12", label: "enterprise & NGO clients" },
-  { value: "2024", label: "AI-first: LLM features in every build since" },
+  { value: "12", label: "enterprise and NGO clients" },
+  { value: "2024", label: "LLM features in every build since" },
 ];
 
 export const facts = [
   { label: "Based in", value: "Dhaka, Bangladesh (GMT+6)" },
-  { label: "Working hours", value: "Flexible · overlaps US East mornings and EU day" },
-  { label: "Open to", value: "Remote full-time · contract · fractional" },
+  { label: "Working hours", value: "Flexible, overlaps US East mornings and EU day" },
+  { label: "Open to", value: "Remote full-time, contract, fractional" },
   { label: "Languages", value: "English, Bangla" },
   { label: "Current role", value: "Senior Software Engineer, Kaz Software" },
 ];
@@ -369,7 +343,7 @@ export const experience = [
     company: "Kaz Software LTD",
     role: "Senior Software Engineer",
     period: "Aug 2020 – Present",
-    location: "Dhaka · hybrid",
+    location: "Dhaka, hybrid",
     summary:
       "Core engineer on Agilibo, a multi-tenant agile SaaS: Laravel and Node backends, Redis and Elasticsearch, Jira and Azure DevOps integrations, and LLM-powered insights.",
     stack: ["Laravel", "Node.js", "Vue.js", "Redis", "Elasticsearch", "OpenAI API", "Docker"],
@@ -405,7 +379,7 @@ export const process = [
     step: "02",
     title: "Build in the open",
     description:
-      "Weekly demo on a staging URL. Typed APIs, tests on the paths that matter, evals for any LLM feature so quality is measured, not guessed.",
+      "Weekly demo on a staging URL. Typed APIs, tests on the paths that matter, evals for any LLM feature so quality has a number.",
   },
   {
     step: "03",

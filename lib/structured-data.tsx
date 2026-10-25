@@ -59,7 +59,7 @@ export function WebSiteSchema() {
     "@type": "WebSite",
     name: `${siteConfig.name} - Portfolio`,
     url: baseUrl,
-    description: "AI-First Full Stack Engineer portfolio — LLM-powered web apps, SaaS platforms and device integrations.",
+    description: "AI-First Full Stack Engineer portfolio: LLM-powered web apps, SaaS platforms and device integrations.",
     publisher: {
       "@type": "Person",
       name: siteConfig.name,

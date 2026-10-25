@@ -16,7 +16,7 @@ module.exports = {
         ink: {
           DEFAULT: '#15140f',
           2: '#4b4842',
-          3: '#7a766e',
+          3: '#6b675f',
         },
         line: {
           DEFAULT: '#e3ded4',
@@ -36,6 +36,10 @@ module.exports = {
       },
       maxWidth: {
         site: '72rem',
+      },
+      boxShadow: {
+        card: '0 8px 30px -12px rgba(21, 20, 15, 0.25)',
+        float: '0 10px 30px -10px rgba(21, 20, 15, 0.45)',
       },
       animation: {
         'fade-up': 'fadeUp 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both',

@@ -6,11 +6,13 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    overflow-x: clip;
   }
 
   body {
     @apply bg-paper text-ink antialiased;
     font-feature-settings: "ss01", "cv11";
+    overflow-x: clip;
   }
 
   ::selection {
@@ -26,15 +28,19 @@
   }
 
   .skip-link {
-    @apply absolute -top-full left-4 z-[100] px-4 py-2 bg-ink text-paper text-sm font-medium rounded-md transition-all duration-200 focus:top-4;
+    @apply fixed top-4 left-4 z-[100] px-4 py-2 bg-ink text-paper text-sm font-medium rounded-md -translate-y-[200%] transition-transform duration-200 focus:translate-y-0;
   }
 
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
-    .animate-fade-up {
-      animation: none;
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
   }
 }
@@ -49,7 +55,7 @@
   }
 
   .eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.14em] text-ink-3;
+    @apply font-mono text-xs text-ink-3;
   }
 
   .h-display {
@@ -65,23 +71,29 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 h-12 px-6 rounded-md text-[15px] font-medium transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 h-12 px-6 rounded-md text-[15px] font-medium transition-colors duration-200 active:translate-y-px;
   }
 
   .btn-primary {
-    @apply btn bg-ink text-paper hover:bg-accent;
+    @apply btn bg-ink text-paper hover:bg-accent active:bg-accent-hover;
   }
 
   .btn-secondary {
-    @apply btn bg-transparent text-ink border border-line-strong hover:border-ink hover:bg-paper-2;
+    @apply btn bg-transparent text-ink border border-line-strong hover:border-ink hover:bg-paper-2 active:bg-paper-3;
+  }
+
+  /* Inline text link. Vertical padding is cancelled by negative margin so the
+     44px touch target does not change the layout. */
+  .link {
+    @apply inline-flex items-center py-2 -my-2 text-ink underline underline-offset-4 decoration-line-strong hover:decoration-ink active:decoration-accent transition-colors;
   }
 
   .btn-link {
-    @apply inline-flex items-center gap-1.5 text-[15px] font-medium text-ink underline underline-offset-4 decoration-line-strong hover:decoration-ink transition-colors;
+    @apply link gap-1.5 text-[15px] font-medium;
   }
 
   .chip {
-    @apply inline-flex items-center h-7 px-2.5 rounded-sm bg-paper-2 border border-line font-mono text-[11px] tracking-wide text-ink-2;
+    @apply inline-flex items-center h-7 px-2.5 rounded-sm bg-paper-2 border border-line font-mono text-xs tracking-wide text-ink-2;
   }
 
   .rule {
